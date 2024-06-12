@@ -1,0 +1,47 @@
+version: '3'
+
+networks:
+    myapp:
+        driver: bridge
+
+services:
+    nginx:
+        image: nginx:latest
+        volumes:
+            - ./:/var/www/
+            - ./docker/nginx/conf.d/:/etc/nginx/conf.d
+        ports:
+            - '8899:80'
+        depends_on:
+            - app
+        container_name: nginx
+        networks:
+            - myapp
+
+    app:
+        build:
+            context: .
+            dockerfile: docker/app/Dockerfile
+        volumes:
+            - ./:/var/www/
+        depends_on:
+            - db
+        container_name: app
+        networks:
+            - myapp
+
+    db:
+        image: mysql:latest
+        volumes:
+            - ./tmp/db:/var/lib/mysql
+        environment:
+            MYSQL_DATABASE: store_db
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: store_user
+            MYSQL_PASSWORD: store_password
+        ports:
+            - '7171:3306'
+        command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+        container_name: db
+        networks:
+            - myapp
