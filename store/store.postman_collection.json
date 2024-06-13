@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "edac7588-c3d6-4807-9318-8096545f2af3",
+		"name": "store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22362807"
+	},
+	"item": [
+		{
+			"name": "products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8899/api/v1/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8899",
+					"path": [
+						"api",
+						"v1",
+						"products"
+					],
+					"query": [
+						{
+							"key": "with[]",
+							"value": "properties",
+							"disabled": true
+						},
+						{
+							"key": "with[]",
+							"value": "properties.color",
+							"disabled": true
+						},
+						{
+							"key": "with[]",
+							"value": "properties.size",
+							"disabled": true
+						},
+						{
+							"key": "with[]",
+							"value": "properties.brand",
+							"disabled": true
+						},
+						{
+							"key": "properties[color][]",
+							"value": "red",
+							"disabled": true
+						},
+						{
+							"key": "properties[color][]",
+							"value": "green",
+							"disabled": true
+						},
+						{
+							"key": "properties[size][]",
+							"value": "10ml",
+							"disabled": true
+						},
+						{
+							"key": "properties[brand][]",
+							"value": "dior",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
