@@ -28,7 +28,11 @@ API для работы с продуктами
     ```sh
     $ docker-compose up -d
     ```
-5. Выполните миграции базы данных и установку первоначальных данных:
+5. Установите зависимости:
+    ```sh
+    $ docker-compose exec "app" composer install --no-interaction --ansi --no-suggest
+    ```
+6. Выполните миграции базы данных и установку первоначальных данных:
     ```sh
     $ docker-compose exec "app" php artisan migrate --seed
    ```
